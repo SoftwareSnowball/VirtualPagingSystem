@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include "parameters.h"
+#include "page_table.h"
 
 int main()
 {
-	std::cout << is_address_type_valid() << std::endl;
-	std::cout << "Hello World!\n";
+
 
 #ifdef _WIN32
 	system("PAUSE");

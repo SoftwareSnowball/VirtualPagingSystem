@@ -27,6 +27,15 @@
     <ClInclude Include="parameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="page_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tlb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logical_address.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
