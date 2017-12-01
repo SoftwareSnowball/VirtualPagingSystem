@@ -1,9 +1,15 @@
 #ifndef _PARAMETERS_H_
 #define _PARAMETERS_H_
 
+#include "types.h"
+//Yes I included a header file in a header file. I do not enjoy the "guess which header file this header
+//file depends on" game.
+
 namespace parameters {
 	//Simulation Parameters
-	using AddressType = int;		//IF THIS IS SET TOO SMALL FOR THE ADDRESS SIZE IT WILL BREAK THINGS
+
+#define NUMBER_OF_PAGES 256
+#define NUMBER_OF_FRAMES 256
 	
 	#define PAGE_TABLE_SIZE_BITS	8
 	#define PAGE_SIZE_BITS			8

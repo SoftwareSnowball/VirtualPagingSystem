@@ -3,7 +3,13 @@
 
 #include <iostream>
 #include "parameters.h"
-#include "page_table.h"
+
+#define UNIT_TEST_CONFIGURATION 0
+#if UNIT_TEST_CONFIGURATION 
+#define CATCH_CONFIG_MAIN
+#include "external\catch.hpp"
+#include "testcode\testcode.h"
+#else
 
 int main()
 {
@@ -14,4 +20,7 @@ int main()
 #endif
     return 0;
 }
+
+
+#endif
 

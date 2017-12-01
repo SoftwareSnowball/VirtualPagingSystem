@@ -2,12 +2,12 @@
 #define TLB_H
 //translation lookaside buffer (because I keep forgetting what the acronym stands for)
 
-namespace data {
+namespace vmm {
 
 
 
 
-} //end of namespace data
+} //end of namespace vmm
 
 
 #endif
