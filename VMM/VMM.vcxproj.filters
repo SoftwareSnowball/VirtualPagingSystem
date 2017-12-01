@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="TLB replacement polity.txt" />
+    <Text Include="prototypes.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h">

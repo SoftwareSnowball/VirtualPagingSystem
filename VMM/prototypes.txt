@@ -1,0 +1,33 @@
+TLB replacement algorithm
+
+Design function
+Purpose: check TLB if there is a TLB hit or miss
+
+using PageNumber = unsigned int;
+using FrameNumber = unsigned int;
+using AddressType = unsigned int;
+
+Prototype:
+
+Side Note:
+	Page number is the number of any page in main or virtual memory
+	frame number is the location of the page in main memory
+
+// CHECK TLB FUNCTION
+/*
+	black box behavior
+
+	takes a page number and searches tlb
+
+	if found returns frame number
+	else returns nullptr
+*/
+FrameNumber check_tlb(PageNumber page_number);
+
+//SEARCH PAGE TABLE
+FrameNumber search_page_table(PageNumber page_number)
+
+//HANDLE PAGE FAULT
+bool replace_page(PageNumber page_number, PhysicalMemory*, PageTable*, TLB*);
+
+auto page_fault_handler = [&a](PageNumber page_number) {return NULL;}; //Please do not do this. This is very silly.

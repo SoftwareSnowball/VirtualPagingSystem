@@ -1,0 +1,33 @@
+2 Replacement Policies
+
+FIFO
+
+LRU (Least Recently Used)
+
+Overall idea. The entry that has been used the longest time ago gets replaced.
+
+
+So I'm guessing you maintain an order of usage list and update the list everytime you use something by bringing it to the front
+This would mean we always get rid of the last element in the list when we need to perform a replacement... yup
+
+Let's use a linked list for this
+
+template <typename T>
+class LinkedList {
+public:
+
+
+
+private:
+	struct Node {
+		T element_;
+		Node* next_;
+	}
+
+	Node* front_;
+	Node* end_;
+
+
+
+};
+

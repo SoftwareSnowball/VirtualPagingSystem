@@ -9,10 +9,10 @@ namespace vmm {
 namespace data {
 
 	//Do not put this on the stack. It is going to be way too large.
-	class MainMemory {
+	class PhysicalMemory {
 	public:
-		MainMemory();
-		~MainMemory();
+		PhysicalMemory();
+		~PhysicalMemory();
 
 		Byte getFromAddress(AddressType page_location, AddressType offset);
 		Byte setPage(AddressType page_location, void* page); //TODO: replace void with page class when it exists
