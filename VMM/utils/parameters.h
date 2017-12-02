@@ -1,7 +1,7 @@
 #ifndef _PARAMETERS_H_
 #define _PARAMETERS_H_
 
-#include "types.h"
+#include "utils/types.h"
 //Yes I included a header file in a header file. I do not enjoy the "guess which header file this header
 //file depends on" game.
 
@@ -10,16 +10,16 @@ namespace vmm {
 namespace parameters {
 
 #if 1
-	const PageNumber NUMBER_OF_PAGES = 256;
-	const FrameNumber NUMBER_OF_FRAMES = 256;
+	PageNumber NUMBER_OF_PAGES = 256;
+	FrameNumber NUMBER_OF_FRAMES = 256;
 
-	const unsigned int PAGE_TABLE_SIZE_BITS = 8; //TODO: change type and make these dependent on NUMBER_OF_PAGES etc.
-	const unsigned int PAGE_SIZE_BITS = 8;
+	unsigned int PAGE_TABLE_SIZE_BITS = 8; //TODO: change type and make these dependent on NUMBER_OF_PAGES etc.
+	unsigned int PAGE_SIZE_BITS = 8;
 
-	const unsigned int ADDRESS_SIZE = PAGE_TABLE_SIZE_BITS + PAGE_SIZE_BITS;
+	unsigned int ADDRESS_SIZE = PAGE_TABLE_SIZE_BITS + PAGE_SIZE_BITS;
 
-	const unsigned int PAGE_SIZE = 1 << PAGE_SIZE_BITS;
-	const unsigned int NUMBER_OF_PAGES = 1 << PAGE_TABLE_SIZE_BITS;
+	unsigned int PAGE_SIZE = 1 << PAGE_SIZE_BITS;
+	//const unsigned int NUMBER_OF_PAGES = 1 << PAGE_TABLE_SIZE_BITS;
 
 #else
 	//Simulation Parameters

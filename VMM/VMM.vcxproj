@@ -153,13 +153,10 @@
     <Text Include="TLB replacement polity.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="logical_address.h" />
-    <ClInclude Include="page_table.h" />
-    <ClInclude Include="physical_memory.h" />
-    <ClInclude Include="page.h" />
+    <ClInclude Include="datatypes\logical_address.h" />
+    <ClInclude Include="io\fileio.h" />
     <ClInclude Include="parameters.h" />
     <ClInclude Include="testcode\testcode.h" />
-    <ClInclude Include="tlb.h" />
     <ClInclude Include="types.h" />
   </ItemGroup>
   <ItemGroup>

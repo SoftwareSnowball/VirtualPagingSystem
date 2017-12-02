@@ -7,14 +7,10 @@ Last Change:	12/1/2017
 
 Purpose:	
 	This file holds the entry point for the 
-			
-
-
 
 */
 
 #include <iostream>
-#include "parameters.h"
 
 // Note that my test code depends on the catch library at
 // https://github.com/catchorg/Catch2
@@ -28,10 +24,18 @@ Purpose:
 int main()
 {
 
+	//Start the memory manager
+	//Start the file IO manager
 
-#ifdef _WIN32
-	system("PAUSE");
-#endif
+	//read all addresses into an array
+
+	//one by one feed addresses into the file memory manager and assign
+	//results into an array of data
+
+
+	//use file IO manager to write outputs to file
+
+
     return 0;
 }
 

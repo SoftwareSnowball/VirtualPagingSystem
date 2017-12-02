@@ -16,6 +16,9 @@
     <Filter Include="Test Files">
       <UniqueIdentifier>{f833297a-617c-46c9-9f46-6c50f54ffde3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="datatypes">
+      <UniqueIdentifier>{0f8748c5-4869-48c5-afc8-b700483bf0d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -27,26 +30,17 @@
     <ClInclude Include="parameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tlb.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="logical_address.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="page.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="physical_memory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="page_table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testcode\testcode.h">
       <Filter>Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="datatypes\logical_address.h">
+      <Filter>datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="io\fileio.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
