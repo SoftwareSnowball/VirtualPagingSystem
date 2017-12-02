@@ -13,11 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Test Files">
+      <UniqueIdentifier>{f833297a-617c-46c9-9f46-6c50f54ffde3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
     <Text Include="TLB replacement polity.txt" />
     <Text Include="prototypes.txt" />
+    <Text Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="parameters.h">
@@ -29,17 +33,20 @@
     <ClInclude Include="logical_address.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="testcode\testcode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="main_memory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="page.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="physical_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testcode\testcode.h">
+      <Filter>Test Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

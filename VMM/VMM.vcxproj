@@ -147,13 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="Notes.txt" />
     <Text Include="prototypes.txt" />
     <Text Include="ReadMe.txt" />
     <Text Include="TLB replacement polity.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="logical_address.h" />
-    <ClInclude Include="main_memory.h" />
+    <ClInclude Include="page_table.h" />
+    <ClInclude Include="physical_memory.h" />
     <ClInclude Include="page.h" />
     <ClInclude Include="parameters.h" />
     <ClInclude Include="testcode\testcode.h" />

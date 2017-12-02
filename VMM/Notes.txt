@@ -1,0 +1,56 @@
+In an effort to once and for all destroy my constant errors
+in using the wrong word for the wrong thing, here is the definition
+of everything!
+
+Definition of Terms:
+Note that all "has a" relationships described in here are abstract and
+may not be directly represented in the actual data structures.
+
+VMM 
+	Virtual Memory Manager
+
+Primary Memory 
+	RAM (aka main memory)
+
+Secondary Memory 
+	Disk (aka backing store)
+
+frame 
+	a fixed length block of main memory.
+	This is always at the same memory address
+	in main memory
+
+frame number
+	specifies a specific frame. This can be used as
+	a location since a frame is a segment of memory
+	not data.
+
+page 
+	a fixed length block of data that may be
+	in secondary memory or copied into a frame in
+	main memory.
+
+page number
+	identifier which specifies a page of data which may
+	reside in main memory or secondary memory.
+
+	QUESTION: Is this page number stored as data in a page, or
+	does it correspond to a location in secondary memory?
+
+	TENTATIVE ANSWER: Page n corresponds to the nth block of data in
+	secondary memory meaning it can be used as an idex when retrieving data from
+	secondary memory. In other words, pages are always stored 
+	consecutively in order of the page number in secondary memory.
+
+page table
+	a special page which holds a mapping of page numbers to frame numbers
+	in main memory
+
+
+
+
+
+
+
+
+

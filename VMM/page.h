@@ -8,7 +8,7 @@ namespace vmm {
 namespace data {
 
 	struct Page {
-		Byte page_data_[PAGE_SIZE];
+		Byte page_data_[parameters::PAGE_SIZE];
 	};
 
 } //end of namespace data	

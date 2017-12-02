@@ -15,12 +15,12 @@ namespace data {
 		~PhysicalMemory();
 
 		Byte getFromAddress(AddressType page_location, AddressType offset);
-		Byte setPage(AddressType page_location, void* page); //TODO: replace void with page class when it exists
+		Byte setFrame(AddressType page_location, void* page); //TODO: replace void with page class when it exists
 
 	private:
 		union {
-			Byte data_[NUMBER_OF_PAGES * NUMBER_OF_FRAMES];
-			Page pages_[NUMBER_OF_PAGES];
+			Byte data_[parameters::NUMBER_OF_PAGES * parameters::NUMBER_OF_FRAMES];
+			Page pages_[parameters::NUMBER_OF_PAGES];
 		};
 	};
 
