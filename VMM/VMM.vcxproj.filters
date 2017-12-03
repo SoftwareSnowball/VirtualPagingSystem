@@ -16,8 +16,14 @@
     <Filter Include="Test Files">
       <UniqueIdentifier>{f833297a-617c-46c9-9f46-6c50f54ffde3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="datatypes">
-      <UniqueIdentifier>{0f8748c5-4869-48c5-afc8-b700483bf0d9}</UniqueIdentifier>
+    <Filter Include="Header Files\memorymanager">
+      <UniqueIdentifier>{92a88eb8-f81c-4c04-822f-35f58024b5f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\memorymanager\memory">
+      <UniqueIdentifier>{396de881-5fb9-4ba2-b8c4-c3f133284be5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\fileio">
+      <UniqueIdentifier>{e7af4413-166b-40d2-8ee1-0b7a9094b182}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,24 +33,42 @@
     <Text Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="parameters.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="testcode\testcode.h">
       <Filter>Test Files</Filter>
     </ClInclude>
-    <ClInclude Include="datatypes\logical_address.h">
-      <Filter>datatypes</Filter>
+    <ClInclude Include="testcode\test_io.h">
+      <Filter>Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memorymanager\memory\main_memory.h">
+      <Filter>Header Files\memorymanager\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memorymanager\memory_manager.h">
+      <Filter>Header Files\memorymanager</Filter>
+    </ClInclude>
+    <ClInclude Include="memorymanager\memory\tlb.h">
+      <Filter>Header Files\memorymanager\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memorymanager\memory\page_table.h">
+      <Filter>Header Files\memorymanager\memory</Filter>
     </ClInclude>
     <ClInclude Include="io\fileio.h">
+      <Filter>Header Files\fileio</Filter>
+    </ClInclude>
+    <ClInclude Include="testcode\test_memory_manager.h">
+      <Filter>Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\parameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="io\fileio.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

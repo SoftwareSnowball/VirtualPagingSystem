@@ -16,10 +16,12 @@ Purpose:
 // https://github.com/catchorg/Catch2
 // This dependency is only in my test code. My production code only depends
 // on standard c++ libraries
-#define UNIT_TEST_CONFIGURATION 0
+#define UNIT_TEST_CONFIGURATION 1
 #if UNIT_TEST_CONFIGURATION 
 #include "testcode\testcode.h"
 #else
+
+
 
 int main()
 {

@@ -153,14 +153,20 @@
     <Text Include="TLB replacement polity.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="datatypes\logical_address.h" />
     <ClInclude Include="io\fileio.h" />
-    <ClInclude Include="parameters.h" />
+    <ClInclude Include="memorymanager\memory\main_memory.h" />
+    <ClInclude Include="memorymanager\memory\page_table.h" />
+    <ClInclude Include="memorymanager\memory\tlb.h" />
+    <ClInclude Include="memorymanager\memory_manager.h" />
     <ClInclude Include="testcode\testcode.h" />
-    <ClInclude Include="types.h" />
+    <ClInclude Include="testcode\test_io.h" />
+    <ClInclude Include="testcode\test_memory_manager.h" />
+    <ClInclude Include="utils\parameters.h" />
+    <ClInclude Include="utils\types.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="io\fileio.cc" />
+    <ClCompile Include="main.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
