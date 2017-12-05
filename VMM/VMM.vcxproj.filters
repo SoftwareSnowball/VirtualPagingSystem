@@ -37,6 +37,9 @@
     <Filter Include="Source Files\memorymanager\memory">
       <UniqueIdentifier>{8e9cd6be-3557-4f4d-9afd-4c20ad51ccc8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\memorymanager\backingstore">
+      <UniqueIdentifier>{1b466aa9-ab6d-4b04-8ac6-d02d41543d38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +78,15 @@
     <ClInclude Include="utils\parameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="memorymanager\backingstore\backingstore_manager.h">
+      <Filter>Header Files\memorymanager\backingstore</Filter>
+    </ClInclude>
+    <ClInclude Include="memorymanager\memory\page.h">
+      <Filter>Header Files\memorymanager\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="testcode\test_backingstore.h">
+      <Filter>Test Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">
@@ -93,6 +105,12 @@
       <Filter>Source Files\memorymanager\memory</Filter>
     </ClCompile>
     <ClCompile Include="memorymanager\memory\tlb.cc">
+      <Filter>Source Files\memorymanager\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\backingstore\backingstore_manager.cc">
+      <Filter>Source Files\memorymanager\backingstore</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory\page.cc">
       <Filter>Source Files\memorymanager\memory</Filter>
     </ClCompile>
   </ItemGroup>

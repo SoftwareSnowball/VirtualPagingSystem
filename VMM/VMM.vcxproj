@@ -154,11 +154,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="io\fileio.h" />
+    <ClInclude Include="memorymanager\backingstore\backingstore_manager.h" />
     <ClInclude Include="memorymanager\memory\main_memory.h" />
+    <ClInclude Include="memorymanager\memory\page.h" />
     <ClInclude Include="memorymanager\memory\page_table.h" />
     <ClInclude Include="memorymanager\memory\tlb.h" />
     <ClInclude Include="memorymanager\memory_manager.h" />
     <ClInclude Include="testcode\testcode.h" />
+    <ClInclude Include="testcode\test_backingstore.h" />
     <ClInclude Include="testcode\test_io.h" />
     <ClInclude Include="testcode\test_memory_manager.h" />
     <ClInclude Include="utils\parameters.h" />
@@ -167,7 +170,9 @@
   <ItemGroup>
     <ClCompile Include="io\fileio.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="memorymanager\backingstore\backingstore_manager.cc" />
     <ClCompile Include="memorymanager\memory\main_memory.cc" />
+    <ClCompile Include="memorymanager\memory\page.cc" />
     <ClCompile Include="memorymanager\memory\page_table.cc" />
     <ClCompile Include="memorymanager\memory\tlb.cc" />
     <ClCompile Include="memorymanager\memory_manager.cc" />

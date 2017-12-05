@@ -35,7 +35,7 @@ inputs:
 
 TEST_CASE("Test Memory Manager Init", "[VMM]") {
 
-	vmm::ParametersManagedPtr parameters(new vmm_parameters::SimulationParameters);
+	std::unique_ptr<vmm_parameters::SimulationParameters> parameters;
 	vmm::MemoryManager manager(std::move(parameters));
 
 	REQUIRE(parameters == nullptr); //parameters' ownership should be moved to the manager

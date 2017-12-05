@@ -12,12 +12,10 @@
 
 namespace vmm {
 	using ParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
-	
-	namespace memory {
-		using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
-		using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
-		using TLBManagedPtr = std::unique_ptr<memory::TLB>;
-	} //end of namespace memory
+	using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
+	using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
+	using TLBManagedPtr = std::unique_ptr<memory::TLB>;
+
 	
 	class MemoryManager {
 	public:
@@ -26,12 +24,13 @@ namespace vmm {
 	
 		bool SetupFailed();
 		std::string getError();
-		Byte ReadAddress(AddressType);
+		Byte ReadAddress(LogicalAddress);
 	
 	private:
-		memory::MainMemoryManagedPtr main_memory_;
-		memory::PageTableManagedPtr page_table_;
-		memory::TLBManagedPtr tlb_;
+		ParametersManagedPtr parameters_;
+		MainMemoryManagedPtr main_memory_;
+		PageTableManagedPtr page_table_;
+		TLBManagedPtr tlb_;
 	
 };
 } //end of namespace vmm
