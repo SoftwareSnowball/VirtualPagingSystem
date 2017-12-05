@@ -8,6 +8,7 @@
 
 #include "test_io.h"
 #include "test_memory_manager.h"
+#include "test_backingstore.h"
 
 
 
