@@ -167,6 +167,9 @@
   <ItemGroup>
     <ClCompile Include="io\fileio.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="memorymanager\memory\main_memory.cc" />
+    <ClCompile Include="memorymanager\memory\page_table.cc" />
+    <ClCompile Include="memorymanager\memory\tlb.cc" />
     <ClCompile Include="memorymanager\memory_manager.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
