@@ -25,6 +25,9 @@
     <Filter Include="Header Files\fileio">
       <UniqueIdentifier>{e7af4413-166b-40d2-8ee1-0b7a9094b182}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{5aca2cde-93a7-498f-94bc-f04cee7c1f26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -38,9 +41,6 @@
     </ClInclude>
     <ClInclude Include="testcode\test_io.h">
       <Filter>Test Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils\types.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="memorymanager\memory\main_memory.h">
       <Filter>Header Files\memorymanager\memory</Filter>
@@ -61,7 +61,10 @@
       <Filter>Test Files</Filter>
     </ClInclude>
     <ClInclude Include="utils\parameters.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\types.h">
+      <Filter>Header Files\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
