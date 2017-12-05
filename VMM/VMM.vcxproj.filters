@@ -25,6 +25,15 @@
     <Filter Include="Header Files\fileio">
       <UniqueIdentifier>{e7af4413-166b-40d2-8ee1-0b7a9094b182}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\memorymanager">
+      <UniqueIdentifier>{6fb5e4c8-ec73-4b66-a92d-31ea92b310b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\filio">
+      <UniqueIdentifier>{152b2735-8370-4a8b-bc69-c89f65fa0426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\memorymanager\backingstore">
+      <UniqueIdentifier>{e1842192-3782-48be-9039-0a070cf626a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -65,11 +74,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="io\fileio.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cc">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory_manager.cc">
+      <Filter>Source Files\memorymanager</Filter>
+    </ClCompile>
+    <ClCompile Include="io\fileio.cc">
+      <Filter>Source Files\filio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -79,7 +79,7 @@ TEST_CASE("Test IO_MANAGER ReadAddresses", "[FileIO]") {
 
 		REQUIRE(addresses.size() == file_length);
 
-		for (int i = 0; i < addresses.size(); i++) {
+		for (unsigned int i = 0; i < addresses.size(); i++) {
 			REQUIRE(addresses[i] == file_contents[i]);
 		}
 		

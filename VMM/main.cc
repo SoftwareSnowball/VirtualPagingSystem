@@ -21,8 +21,6 @@ Purpose:
 #include "testcode\testcode.h"
 #else
 
-
-
 int main()
 {
 

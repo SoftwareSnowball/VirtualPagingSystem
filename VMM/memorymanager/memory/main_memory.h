@@ -5,7 +5,10 @@ namespace vmm {
 namespace memory {
 
 	class MainMemory {
+	public:
 
+
+	private:
 		int id;
 
 

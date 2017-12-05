@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="io\fileio.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="memorymanager\memory_manager.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
