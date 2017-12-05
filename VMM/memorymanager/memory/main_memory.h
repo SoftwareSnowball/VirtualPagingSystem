@@ -3,15 +3,23 @@
 
 #include <memory>
 
+#include "..\..\utils\types.h"
+#include "..\..\utils\parameters.h"
+
 namespace vmm {
 namespace memory {
 
 class MainMemory {
 public:
+	MainMemory(Size frame_size, Count number_of_frames);
+	~MainMemory();
 
+	Byte* getFrameAddress(FrameNumber frame);
 
 private:
-	std::unique_ptr<Byte[]> data;
+	const Size frame_size_;
+	const Count number_of_frames_;
+	std::unique_ptr<Byte[]> data_;
 
 };
 

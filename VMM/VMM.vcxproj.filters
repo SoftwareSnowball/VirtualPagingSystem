@@ -90,6 +90,9 @@
     <ClInclude Include="testcode\test_page.h">
       <Filter>Test Files</Filter>
     </ClInclude>
+    <ClInclude Include="testcode\test_main_memory.h">
+      <Filter>Test Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">

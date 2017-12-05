@@ -163,6 +163,7 @@
     <ClInclude Include="testcode\testcode.h" />
     <ClInclude Include="testcode\test_backingstore.h" />
     <ClInclude Include="testcode\test_io.h" />
+    <ClInclude Include="testcode\test_main_memory.h" />
     <ClInclude Include="testcode\test_memory_manager.h" />
     <ClInclude Include="testcode\test_page.h" />
     <ClInclude Include="utils\parameters.h" />

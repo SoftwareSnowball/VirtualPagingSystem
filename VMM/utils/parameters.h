@@ -29,8 +29,8 @@ namespace vmm_parameters {
 		unsigned int num_tlb_entries_;
 		SizePow2 page_size_bits;
 		SizePow2 frame_size_bits;
-		unsigned int page_size_;
-		unsigned int frame_size_;
+		Size page_size_;
+		Size frame_size_;
 		unsigned int number_of_frames_;
 		unsigned int physical_memory_size_;
 

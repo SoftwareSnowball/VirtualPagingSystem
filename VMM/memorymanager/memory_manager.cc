@@ -5,7 +5,7 @@ namespace vmm {
 
 	MemoryManager::MemoryManager(ParametersManagedPtr parameters)
 	{
-		main_memory_ = MainMemoryManagedPtr(new memory::MainMemory);
+		main_memory_ = MainMemoryManagedPtr(new memory::MainMemory(parameters->frame_size_, parameters->number_of_frames_));
 		page_table_ = PageTableManagedPtr(new memory::PageTable);
 		tlb_ = TLBManagedPtr(new memory::TLB);
 	

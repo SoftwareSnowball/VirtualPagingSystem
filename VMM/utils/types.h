@@ -7,7 +7,9 @@ using PageNumber = unsigned int;
 using FrameNumber = PageNumber;
 
 using Byte = char;
-using SizePow2 = int;
+using Size = unsigned int;
+using SizePow2 = unsigned int;
+using Count = unsigned int;
 
 
 #endif
