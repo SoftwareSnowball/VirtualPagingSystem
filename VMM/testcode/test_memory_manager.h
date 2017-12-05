@@ -25,24 +25,23 @@ Purpose:
 inputs:
 	parameters struct
 
-
 */
 
 
 
 #include "..\external\catch.hpp"
-//#include "..\memorymanager\memory_manager.h"
+#include "..\utils\parameters.h"
+#include "..\memorymanager\memory_manager.h"
 
 TEST_CASE("Test Memory Manager Init", "[VMM]") {
 
+	vmm::ParametersManagedPtr parameters(new vmm_parameters::SimulationParameters);
+	vmm::MemoryManager manager(std::move(parameters));
 
+	REQUIRE(parameters == nullptr); //parameters' ownership should be moved to the manager
 
-
-
-
+	REQUIRE(manager.SetupFailed() == false);
 }
-
-
 
 
 #endif

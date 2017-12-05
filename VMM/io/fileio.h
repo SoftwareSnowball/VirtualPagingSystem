@@ -22,8 +22,6 @@ namespace vmm_io {
 		IOStatus ReadAddresses(std::string path, std::vector<LogicalAddress>* addresses);
 		IOStatus WriteFile(std::string path, std::string data);
 
-
-
 	};
 
 
