@@ -6,7 +6,7 @@ Date Created:	11/30/2017
 Last Change:	12/1/2017
 
 Purpose:	
-	This file holds the entry point for the 
+	This file holds the entry point for the virtual memory manager application
 
 */
 
