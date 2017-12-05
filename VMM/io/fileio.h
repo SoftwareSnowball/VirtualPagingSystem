@@ -19,7 +19,7 @@ namespace vmm_io {
 		FileIO() = default;
 		~FileIO() = default;
 
-		IOStatus ReadAddresses(std::string path, std::vector<AddressType>* addresses);
+		IOStatus ReadAddresses(std::string path, std::vector<LogicalAddress>* addresses);
 		IOStatus WriteFile(std::string path, std::string data);
 
 

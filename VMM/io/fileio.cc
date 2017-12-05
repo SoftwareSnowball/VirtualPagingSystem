@@ -4,14 +4,14 @@
 
 namespace vmm_io {
 
-	IOStatus FileIO::ReadAddresses(std::string path, std::vector<AddressType>* addresses) {
+	IOStatus FileIO::ReadAddresses(std::string path, std::vector<LogicalAddress>* addresses) {
 		std::ifstream reader(path);
 		if (!reader.is_open())
 			return IOStatus(kFileCannotBeOpened);
 
 		std::string line;
 
-		AddressType element;
+		LogicalAddress element;
 
 		while (!reader.eof())
 		{
@@ -21,7 +21,7 @@ namespace vmm_io {
 			//converted to a long long to prevent data loss if the simulation is set
 			//to use a very large address. 
 			if (!line.empty()) {
-			element = (AddressType)std::atoll(line.c_str());
+			element = (LogicalAddress)std::atoll(line.c_str());
 			addresses->push_back(element);
 			}
 		}

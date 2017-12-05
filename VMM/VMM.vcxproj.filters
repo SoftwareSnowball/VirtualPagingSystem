@@ -28,6 +28,12 @@
     <Filter Include="Header Files\utils">
       <UniqueIdentifier>{5aca2cde-93a7-498f-94bc-f04cee7c1f26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\memorymanager">
+      <UniqueIdentifier>{401285ad-5c68-4285-943d-5d3913dfba45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\memorymanager\memory">
+      <UniqueIdentifier>{c1547d14-2f95-40fb-8f8d-b50b9608fdcf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -73,6 +79,18 @@
     </ClCompile>
     <ClCompile Include="main.cc">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory\main_memory.cc">
+      <Filter>Source Files\memorymanager\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory\page_table.cc">
+      <Filter>Source Files\memorymanager\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory\tlb.cc">
+      <Filter>Source Files\memorymanager\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memorymanager\memory_manager.cc">
+      <Filter>Source Files\memorymanager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

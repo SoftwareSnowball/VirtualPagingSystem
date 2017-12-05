@@ -54,7 +54,7 @@ using namespace vmm_io;
 TEST_CASE("Test IO_MANAGER ReadAddresses", "[FileIO]") {
 	FileIO io_manager;
 	IOStatus status;
-	std::vector<AddressType> addresses;
+	std::vector<LogicalAddress> addresses;
 	std::string path = "testinput.txt";
 	std::string badPath = "whatIsThis.txt";
 
@@ -73,9 +73,9 @@ TEST_CASE("Test IO_MANAGER ReadAddresses", "[FileIO]") {
 	SECTION("Check ReadAddresses can read test file") {
 		status = io_manager.ReadAddresses(path, &addresses);
 
-		AddressType file_contents[] = { 3, 259, 515, 771, 1027,
+		LogicalAddress file_contents[] = { 3, 259, 515, 771, 1027,
 			1283, 7, 263, 519, 775, 1031, 1287 };
-		int file_length = sizeof(file_contents) / sizeof(AddressType);
+		int file_length = sizeof(file_contents) / sizeof(LogicalAddress);
 
 		REQUIRE(addresses.size() == file_length);
 

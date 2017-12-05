@@ -1,10 +1,13 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-using AddressType = int;		//IF THIS IS SET TOO SMALL FOR THE ADDRESS SIZE IT WILL BREAK THINGS
-using Byte = char;
+using LogicalAddress = unsigned int;
+using AddressOffset = LogicalAddress;
 using PageNumber = unsigned int;
-using FrameNumber = unsigned int;
+using FrameNumber = PageNumber;
+
+using Byte = char;
+using SizePow2 = int;
 
 
 #endif

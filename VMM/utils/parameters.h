@@ -7,7 +7,6 @@
 
 namespace vmm_parameters {
 
-
 	class SimulationParameters {
 	public:
 		SimulationParameters() {
@@ -16,18 +15,22 @@ namespace vmm_parameters {
 		~SimulationParameters() = default;
 
 		inline void SetDefaultValues() {
-			number_pages_ = 256;
-			number_frames_ = 256;
+			page_table_size_ = 8;
+			num_tlb_entries_ = 16;
+			page_size_ = 8;
+			frame_size_ = 8;
+			number_of_frames_ = 256;
+			physical_memory_size_ = (2 << frame_size_) * number_of_frames_;
 		};
 
-		int number_pages_;
-		int number_frames_;
-
-	private:
-
+		SizePow2 page_table_size_;
+		unsigned int num_tlb_entries_;
+		SizePow2 page_size_;
+		SizePow2 frame_size_;
+		unsigned int number_of_frames_;
+		unsigned int physical_memory_size_;
 
 	};
-
 
 
 } //end of namespace vmm_parameters

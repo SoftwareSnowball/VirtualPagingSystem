@@ -2,6 +2,7 @@
 #define MEMORY_MANAGER_H_
 
 #include <memory> //not to be confused with namespace memory
+#include <string>
 
 #include "..\utils\types.h"
 #include "..\utils\parameters.h"
@@ -10,23 +11,29 @@
 #include "memory\tlb.h"
 
 namespace vmm {
-using MainMemoryPtr = std::unique_ptr<memory::MainMemory>;
-using PageTablePtr = std::unique_ptr<memory::PageTable>;
-using TLBPtr = std::unique_ptr<memory::TLB>;
+using SimulationParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
+using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
+using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
+using TLBManagedPtr = std::unique_ptr<memory::TLB>;
 
 class MemoryManager {
 public:
-	MemoryManager() = default;
-	~MemoryManager() = default;
+	MemoryManager(SimulationParametersManagedPtr parameters);
+	~MemoryManager();
 
 	bool SetupFailed();
-	Byte ReadAddress(AddressType);
+	std::string GetErrorMsg();
+	Byte ReadAddress(LogicalAddress);
 
 private:
+	PageNumber ParsePageNumber(LogicalAddress logical_address);
+	LogicalAddress ParseOffset(LogicalAddress logical_address);
 
-	MainMemoryPtr main_memory_;
-	PageTablePtr page_table_;
-	TLBPtr tlb_;
+
+private:
+	MainMemoryManagedPtr main_memory_;
+	PageTableManagedPtr page_table_;
+	TLBManagedPtr tlb_;
 
 };
 
