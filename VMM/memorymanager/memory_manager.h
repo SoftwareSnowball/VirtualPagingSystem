@@ -24,9 +24,16 @@ namespace vmm {
 	
 		bool SetupFailed();
 		std::string getError();
+
 		Byte ReadAddress(LogicalAddress);
+
+	private:
+		PageNumber getPage(LogicalAddress address);
+		AddressOffset getOffset(LogicalAddress address);
 	
 	private:
+		bool setup_failed_;
+
 		ParametersManagedPtr parameters_;
 		MainMemoryManagedPtr main_memory_;
 		PageTableManagedPtr page_table_;
