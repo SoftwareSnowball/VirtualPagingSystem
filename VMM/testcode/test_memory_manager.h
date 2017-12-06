@@ -37,10 +37,21 @@ TEST_CASE("Test Memory Manager Init", "[VMM]") {
 
 	std::unique_ptr<vmm_parameters::SimulationParameters> parameters(new vmm_parameters::SimulationParameters);
 	vmm::MemoryManager manager(std::move(parameters));
+	PageNumber page;
+	LogicalAddress address;
+	AddressOffset offset;
+	vmm::MemoryManagerResult result;
 
 	REQUIRE(parameters == nullptr); //parameters' ownership should be moved to the manager
-
 	REQUIRE(manager.SetupFailed() == false);
+
+	address = 0xAFD4;
+	result = manager.getPage(address, &page);
+	REQUIRE(page == 0xAF);
+
+	address = 0xFFFF;
+	result = manager.getPage(address, &page);
+	REQUIRE(page == 255);
 }
 
 

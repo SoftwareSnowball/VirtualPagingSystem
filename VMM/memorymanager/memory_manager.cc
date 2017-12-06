@@ -5,16 +5,15 @@
 namespace vmm {
 
 MemoryManager::MemoryManager(ParametersManagedPtr parameters)
-{
-	main_memory_ = MainMemoryManagedPtr(new memory::MainMemory(parameters->frame_size_, parameters->number_of_frames_));
-	page_table_ = PageTableManagedPtr(new memory::PageTable(parameters->number_of_frames_));
-	tlb_ = TLBManagedPtr(new memory::TLB(parameters->num_tlb_entries_));
+	:parameters_(std::move(parameters)) {
+	main_memory_ = MainMemoryManagedPtr(new memory::MainMemory(parameters_->frame_size_, parameters_->number_of_frames_));
+	page_table_ = PageTableManagedPtr(new memory::PageTable(parameters_->number_of_frames_));
+	tlb_ = TLBManagedPtr(new memory::TLB(parameters_->num_tlb_entries_));
 	setup_failed_ = false;
 	return;
 }
 
-MemoryManager::~MemoryManager()
-{
+MemoryManager::~MemoryManager() {
 	main_memory_ = nullptr;
 	page_table_ = nullptr;
 	tlb_ = nullptr;
@@ -26,16 +25,29 @@ bool MemoryManager::SetupFailed() {
 	return setup_failed_;
 }
 
-std::string MemoryManager::getError() {
-	return std::string("Feature not implemented");
+MemoryManagerResult MemoryManager::getError(std::string* error) {
+	return MemoryManagerResult::kNotImplemented;
 }
 
-Byte MemoryManager::ReadAddress(LogicalAddress)
-{
+Byte MemoryManager::ReadAddress(LogicalAddress) {
+	return 0xFF;
+}
 
+MemoryManagerResult MemoryManager::getPage(LogicalAddress address, PageNumber* page) {
+	if (address > (2 << (parameters_->page_size_bits + parameters_->page_table_size_bits))) {
+		return MemoryManagerResult::kAddressInvalid;
+	}
 
+	*page = address >> parameters_->page_size_bits;
+	return MemoryManagerResult::kSuccess;
+}
 
+MemoryManagerResult MemoryManager::getOffset(LogicalAddress address, AddressOffset* offset) {
+	if (address > (2 << (parameters_->page_size_bits + parameters_->page_table_size_bits))) {
+		return MemoryManagerResult::kAddressInvalid;
+	}
 
+	return MemoryManagerResult::kSuccess;
 }
 
 

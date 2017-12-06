@@ -11,34 +11,43 @@
 #include "memory\tlb.h"
 
 namespace vmm {
-	using ParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
-	using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
-	using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
-	using TLBManagedPtr = std::unique_ptr<memory::TLB>;
+using ParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
+using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
+using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
+using TLBManagedPtr = std::unique_ptr<memory::TLB>;
 
-	
-	class MemoryManager {
-	public:
-		MemoryManager(ParametersManagedPtr parameters);
-		~MemoryManager();
-	
-		bool SetupFailed();
-		std::string getError();
+enum struct MemoryManagerResult {
+	kSuccess,
+	kAddressInvalid,
+	kNoDataAtAddress,
+	kNotImplemented
+};
 
-		Byte ReadAddress(LogicalAddress);
 
-	private:
-		PageNumber getPage(LogicalAddress address);
-		AddressOffset getOffset(LogicalAddress address);
-	
-	private:
-		bool setup_failed_;
+class MemoryManager {
+public:
+	MemoryManager(ParametersManagedPtr parameters);
+	~MemoryManager();
 
-		ParametersManagedPtr parameters_;
-		MainMemoryManagedPtr main_memory_;
-		PageTableManagedPtr page_table_;
-		TLBManagedPtr tlb_;
-	
+	bool SetupFailed();
+	MemoryManagerResult getError(std::string* error);
+
+	Byte ReadAddress(LogicalAddress);
+
+#ifndef _DEBUG
+private:
+#endif
+	MemoryManagerResult getPage(LogicalAddress address, PageNumber* page);
+	MemoryManagerResult getOffset(LogicalAddress address, AddressOffset* offset);
+
+private:
+	bool setup_failed_;
+
+	ParametersManagedPtr parameters_;
+	MainMemoryManagedPtr main_memory_;
+	PageTableManagedPtr page_table_;
+	TLBManagedPtr tlb_;
+
 };
 } //end of namespace vmm
 
