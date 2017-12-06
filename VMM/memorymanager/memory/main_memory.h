@@ -14,7 +14,7 @@ public:
 	MainMemory(Size frame_size, Count number_of_frames);
 	~MainMemory();
 
-	Byte* getFrameAddress(FrameNumber frame);
+	Byte* GetFrameAddress(FrameNumber frame);
 
 private:
 	const Size frame_size_;

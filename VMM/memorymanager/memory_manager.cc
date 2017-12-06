@@ -61,7 +61,7 @@ MemoryManagerResult MemoryManager::ReadAddress(LogicalAddress address, Byte* dat
 		if (page_table_->GetFrame(page, &frame_number) != memory::PageTableResult::kHit) {	
 
 			page_table_->GetEmpty(&frame_number);
-			frame_ptr = main_memory_->getFrameAddress(frame_number);
+			frame_ptr = main_memory_->GetFrameAddress(frame_number);
 			backingstore_->GetPage(page, frame_ptr);
 
 			page_table_->Update(page, frame_number);
@@ -70,7 +70,7 @@ MemoryManagerResult MemoryManager::ReadAddress(LogicalAddress address, Byte* dat
 		tlb_->Update(page, frame_number);
 	}
 
-	frame_ptr = main_memory_->getFrameAddress(frame_number);
+	frame_ptr = main_memory_->GetFrameAddress(frame_number);
 
 	*data = frame_ptr[offset];
 

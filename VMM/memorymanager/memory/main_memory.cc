@@ -14,7 +14,7 @@ MainMemory::~MainMemory()
 	data_ = nullptr;
 }
 
-Byte* MainMemory::getFrameAddress(FrameNumber frame)
+Byte* MainMemory::GetFrameAddress(FrameNumber frame)
 {
 	if (frame >= number_of_frames_ || frame < 0)
 		return nullptr;
