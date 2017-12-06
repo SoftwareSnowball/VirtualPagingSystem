@@ -13,13 +13,17 @@ TEST_CASE("Test page table", "[PageTable]") {
 	
 	SimulationParameters parameters;
 	PageTable page_table(parameters.number_of_frames_);
-
 	FrameNumber frame;
+	PageTableResult code;
 
 	page_table.GetEmpty(&frame);
-
-
 	REQUIRE(frame == 0);
+
+	code = page_table.GetFrame(1, &frame);
+	REQUIRE(code == PageTableResult::kMiss);
+
+	code = page_table.GetFrame(-2, &frame);
+	REQUIRE(code == PageTableResult::kFailed);
 
 }
 #endif

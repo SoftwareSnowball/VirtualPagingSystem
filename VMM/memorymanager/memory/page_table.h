@@ -12,7 +12,7 @@ namespace memory {
 
 using PageEntries = std::unique_ptr<PageNumber[]>;
 
-enum struct PageReturn {
+enum struct PageTableResult {
 	kHit,
 	kMiss,
 	kFailed
@@ -23,8 +23,8 @@ public:
 	PageTable(Count number_of_frames);
 	~PageTable();
 
-	PageReturn GetFrame(PageNumber page_number, FrameNumber* frame);
-	PageReturn GetEmpty(FrameNumber* frame);
+	PageTableResult GetFrame(PageNumber page_number, FrameNumber* frame);
+	PageTableResult GetEmpty(FrameNumber* frame);
 
 private:
 	const Count number_of_frames_;

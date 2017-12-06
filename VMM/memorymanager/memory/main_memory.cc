@@ -11,11 +11,12 @@ MainMemory::MainMemory(Size frame_size, Count number_of_frames)
 
 MainMemory::~MainMemory()
 {
+	data_ = nullptr;
 }
 
 Byte* MainMemory::getFrameAddress(FrameNumber frame)
 {
-	if (frame >= number_of_frames_)
+	if (frame >= number_of_frames_ || frame < 0)
 		return nullptr;
 
 	Byte* frameptr = data_.get();

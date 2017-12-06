@@ -6,35 +6,41 @@ namespace memory {
 PageTable::PageTable(Count number_of_frames)
 	:number_of_frames_(number_of_frames) {
 	page_entries_ = PageEntries(new FrameNumber[number_of_frames_]);
+
+	memset(page_entries_.get(), -1, sizeof(FrameNumber) * number_of_frames_);
 }
 
 PageTable::~PageTable()
 {
+	page_entries_ = nullptr;
 }
 
-PageReturn PageTable::GetFrame(PageNumber page_number, FrameNumber * frame)
+PageTableResult PageTable::GetFrame(PageNumber page_number, FrameNumber * frame)
 {
+
+	if (page_number < 0)
+		return PageTableResult::kFailed;
 	
 	for (FrameNumber index = 0; index < number_of_frames_; index++) {
 		if (page_entries_[index] == page_number) {
 			*frame = index;
-			return PageReturn::kHit;
+			return PageTableResult::kHit;
 		}
 	}
 
-	return PageReturn::kMiss;
+	return PageTableResult::kMiss;
 }
 
-PageReturn PageTable::GetEmpty(FrameNumber * frame)
+PageTableResult PageTable::GetEmpty(FrameNumber * frame)
 {
 	for (FrameNumber index = 0; index < number_of_frames_; index++) {
-		if (page_entries_[index] == 0) {
+		if (page_entries_[index] == -1) {
 			*frame = index;
-			return PageReturn::kHit;
+			return PageTableResult::kHit;
 		}
 	}
 
-	return PageReturn::kMiss;
+	return PageTableResult::kMiss;
 }
 
 } //end of namespace memory
