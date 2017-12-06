@@ -1,7 +1,7 @@
 #ifndef TLB_H_
 #define TLB_H_
 
-#include <memory>
+#include <list>
 #include "..\..\utils\types.h"
 
 
@@ -16,10 +16,10 @@ enum struct TLBResult {
 };
 
 struct TLBEntry {
+	TLBEntry() {};
+	TLBEntry(PageNumber page, FrameNumber frame) :page(page), frame(frame) {};
 	PageNumber page;
 	FrameNumber frame;
-	std::shared_ptr<TLBEntry> next;
-	std::weak_ptr<TLBEntry> prev;
 };
 
 class TLB {
@@ -32,14 +32,11 @@ public:
 
 private:
 	TLBResult MoveToFront(TLBEntry* target);
-	TLBResult PushFront(std::shared_ptr<TLBEntry> target);
+	TLBResult PushFront(int target);
 
 private:
-	Count current_entries_;
 	const Count max_entries_;
-	
-	std::shared_ptr<TLBEntry> front_;
-	std::shared_ptr<TLBEntry> back_;
+	std::list<TLBEntry> entries_;
 };
 
 

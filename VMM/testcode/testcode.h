@@ -11,6 +11,7 @@
 #include "test_backingstore.h"
 #include "test_page_table.h"
 #include "test_main_memory.h"
+#include "test_tlb.h"
 
 
 
