@@ -3,7 +3,7 @@
 
 using LogicalAddress = unsigned int;
 using AddressOffset = LogicalAddress;
-using PageNumber = unsigned int;
+using PageNumber = int;
 using FrameNumber = PageNumber;
 
 using Byte = char;

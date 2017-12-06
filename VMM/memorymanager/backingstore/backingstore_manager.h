@@ -10,7 +10,7 @@
 namespace vmm {
 namespace memory {
 
-	enum BackingstoreReaderCode {
+	enum struct BackingstoreReaderCode {
 		kSuccess = 0,
 		kIndexOutOfBounds,
 		kFailed

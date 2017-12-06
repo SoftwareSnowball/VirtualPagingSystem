@@ -1,6 +1,8 @@
 #ifndef TLB_H_
 #define TLB_H_
 
+#include <memory>
+
 namespace vmm {
 namespace memory {
 

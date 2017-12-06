@@ -166,6 +166,7 @@
     <ClInclude Include="testcode\test_main_memory.h" />
     <ClInclude Include="testcode\test_memory_manager.h" />
     <ClInclude Include="testcode\test_page.h" />
+    <ClInclude Include="testcode\test_page_table.h" />
     <ClInclude Include="utils\parameters.h" />
     <ClInclude Include="utils\types.h" />
   </ItemGroup>

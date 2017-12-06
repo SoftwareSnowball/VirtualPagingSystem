@@ -35,7 +35,7 @@ TEST_CASE("Test the backing store manager", "[Backingstore]") {
 	std::unique_ptr<vmm_parameters::SimulationParameters> params( new vmm_parameters::SimulationParameters);
 	BackingstoreManager manager(params.get());
 	Byte* data = new Byte[params->page_size_];
-	int return_code;
+	BackingstoreReaderCode return_code;
 
 	SECTION("Testing basic usage of GetPage") {
 		return_code = manager.GetPage(0, data);
@@ -51,7 +51,7 @@ TEST_CASE("Test the backing store manager", "[Backingstore]") {
 	SECTION("Testing page out of range") {
 
 		return_code = manager.GetPage(6000000, data);
-		REQUIRE(return_code == kIndexOutOfBounds);
+		REQUIRE(return_code == BackingstoreReaderCode::kIndexOutOfBounds);
 
 	}
 
@@ -67,7 +67,7 @@ TEST_CASE("Testing backingstore manager with bad backingstore path", "[Backingst
 	bool exception_thrown = false;
 
 	try {
-		int return_code = manager.GetPage(2, data);
+		BackingstoreReaderCode return_code = manager.GetPage(2, data);
 	}
 	catch (std::exception& e) {
 		exception_thrown = true;

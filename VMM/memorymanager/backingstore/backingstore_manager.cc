@@ -34,12 +34,12 @@ BackingstoreReaderCode BackingstoreManager::GetPage(PageNumber page_number, Byte
 	if (backingstore.fail())
 	{
 		memset(copy_location, 0, parameters_->page_size_);
-		return kIndexOutOfBounds;
+		return BackingstoreReaderCode::kIndexOutOfBounds;
 	}
 
 
 	backingstore.close();
-	return kSuccess;
+	return BackingstoreReaderCode::kSuccess;
 }
 
 
