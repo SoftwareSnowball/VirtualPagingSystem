@@ -29,7 +29,7 @@ BackingstoreReaderCode BackingstoreManager::GetPage(PageNumber page_number, Byte
 	}
 
 	backingstore.seekg(start_location, std::ios::beg);
-	backingstore.read(copy_location, parameters_->page_size_);
+	backingstore.read((char*)copy_location, parameters_->page_size_);
 
 	if (backingstore.fail())
 	{

@@ -9,18 +9,21 @@
 #include "memory\main_memory.h"
 #include "memory\page_table.h"
 #include "memory\tlb.h"
+#include "backingstore\backingstore_manager.h"
 
 namespace vmm {
 using ParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
 using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;
 using PageTableManagedPtr = std::unique_ptr<memory::PageTable>;
+using BackingStoreManagedPtr = std::unique_ptr<memory::BackingstoreManager>;
 using TLBManagedPtr = std::unique_ptr<memory::TLB>;
 
 enum struct MemoryManagerResult {
 	kSuccess,
 	kAddressInvalid,
 	kNoDataAtAddress,
-	kNotImplemented
+	kNotImplemented,
+	kFailed
 };
 
 
@@ -30,19 +33,23 @@ public:
 	~MemoryManager();
 
 	bool SetupFailed();
-	MemoryManagerResult getError(std::string* error);
+	std::string GetErrorMessage();
 
-	Byte ReadAddress(LogicalAddress);
+	MemoryManagerResult ReadAddress(LogicalAddress, Byte* data);
 
 #ifndef _DEBUG
 private:
 #endif
-	MemoryManagerResult getPage(LogicalAddress address, PageNumber* page);
-	MemoryManagerResult getOffset(LogicalAddress address, AddressOffset* offset);
+	MemoryManagerResult GetPage(LogicalAddress address, PageNumber* page);
+	MemoryManagerResult GetOffset(LogicalAddress address, AddressOffset* offset);
 
 private:
+	BitMask offset_mask_;
+	BitMask page_mask_;
 	bool setup_failed_;
+	std::string error_message_;
 
+	BackingStoreManagedPtr backingstore_;
 	ParametersManagedPtr parameters_;
 	MainMemoryManagedPtr main_memory_;
 	PageTableManagedPtr page_table_;

@@ -43,5 +43,14 @@ PageTableResult PageTable::GetEmpty(FrameNumber * frame)
 	return PageTableResult::kMiss;
 }
 
+PageTableResult PageTable::Update(PageNumber page, FrameNumber frame)
+{
+	if (frame > number_of_frames_ || frame < 0)
+		return PageTableResult::kFailed;
+
+	page_entries_[frame] = page;
+	return PageTableResult::kSuccess;
+}
+
 } //end of namespace memory
 } //end of namespace vmm

@@ -15,7 +15,8 @@ using PageEntries = std::unique_ptr<PageNumber[]>;
 enum struct PageTableResult {
 	kHit,
 	kMiss,
-	kFailed
+	kFailed,
+	kSuccess
 };
 
 class PageTable {
@@ -25,6 +26,7 @@ public:
 
 	PageTableResult GetFrame(PageNumber page_number, FrameNumber* frame);
 	PageTableResult GetEmpty(FrameNumber* frame);
+	PageTableResult Update(PageNumber page, FrameNumber frame);
 
 private:
 	const Count number_of_frames_;

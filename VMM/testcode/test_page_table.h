@@ -12,6 +12,7 @@ using namespace vmm_parameters;
 TEST_CASE("Test page table", "[PageTable]") {
 	
 	SimulationParameters parameters;
+	parameters.number_of_frames_ = 255;
 	PageTable page_table(parameters.number_of_frames_);
 	FrameNumber frame;
 	PageTableResult code;
@@ -24,6 +25,13 @@ TEST_CASE("Test page table", "[PageTable]") {
 
 	code = page_table.GetFrame(-2, &frame);
 	REQUIRE(code == PageTableResult::kFailed);
+
+	code = page_table.Update(1, 12);
+	REQUIRE(code == PageTableResult::kSuccess);
+
+	code = page_table.GetFrame(1, &frame);
+	REQUIRE(code == PageTableResult::kHit);
+	REQUIRE(frame == 12);
 
 }
 #endif
