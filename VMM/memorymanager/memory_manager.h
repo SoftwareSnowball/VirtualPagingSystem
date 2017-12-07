@@ -35,13 +35,16 @@ public:
 	bool SetupFailed();
 	std::string GetErrorMessage();
 
-	MemoryManagerResult ReadAddress(LogicalAddress, Byte* data);
+	MemoryManagerResult ReadAddress(LogicalAddress, Byte* data, PhyscialAddress* phys_addr = nullptr);
+	MemoryManagerResult GetParameterSummary(std::string* summary);
+	MemoryManagerResult SetTLBReplacementPolicy(char policy);
 
 #ifndef _DEBUG
 private:
 #endif
 	MemoryManagerResult GetPage(LogicalAddress address, PageNumber* page);
 	MemoryManagerResult GetOffset(LogicalAddress address, AddressOffset* offset);
+	inline MemoryManagerResult GetPhysical(FrameNumber frame, AddressOffset offset, PhyscialAddress* phys);
 
 private:
 	BitMask offset_mask_;

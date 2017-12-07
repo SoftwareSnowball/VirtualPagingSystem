@@ -23,6 +23,7 @@ public:
 	~BackingstoreManager();
 
 	BackingstoreReaderCode GetPage(PageNumber page_number, Byte* copy_location);
+	Size GetBackingStoreSize();
 
 private:
 	const vmm_parameters::SimulationParameters* parameters_;

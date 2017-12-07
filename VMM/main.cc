@@ -8,32 +8,114 @@ Last Change:	12/1/2017
 Purpose:	
 	This file holds the entry point for the virtual memory manager application
 
+
+References:
+https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int
+https://stackoverflow.com/questions/17045493/default-int-main-arguments-in-c-c
 */
 
-#include <iostream>
+
 
 // Note that my test code depends on the catch library at
 // https://github.com/catchorg/Catch2
 // This dependency is only in my test code. My production code only depends
 // on standard c++ libraries
-#if _DEBUG
+#define RUN_TEST_CODE 1
+#if RUN_TEST_CODE
 #include "testcode\testcode.h"
 #else
 
-int main()
+#include <iostream>
+#include <vector>
+
+#include "utils\parameters.h"
+#include "memorymanager\memory_manager.h"
+#include "io\fileio.h"
+
+
+//for questions on args to main function
+
+int main(int arg_count, const char* arg_val[])
 {
 
-	//Start the memory manager
-	//Start the file IO manager
+	std::string file_path;
+	std::string output_file("output.txt");
+	char line[64];
+	
+	if (arg_count < 2) {
+		std::cout << "Please input the path to a file with input addresses.\n";
+		std::cin.getline(line, sizeof(line));
+		file_path = std::string(line);
+	}
+	else {
+		file_path = std::string(arg_val[1]);
+	}
 
-	//read all addresses into an array
+	vmm_io::FileIO file_manager;
+	vmm::ParametersManagedPtr parameters(new vmm_parameters::SimulationParameters);
+	vmm::MemoryManager memory_manager(std::move(parameters));
 
-	//one by one feed addresses into the file memory manager and assign
-	//results into an array of data
+	std::string parameter_summary;
+	memory_manager.GetParameterSummary(&parameter_summary);
+
+	std::cout << parameter_summary << std::endl;
+
+	bool valid_input;;
+	bool display_physical_address;
+
+	//output simulation characteristics
+	valid_input = false;
+	while (!valid_input) {
+		std::cout << "Display physical address [y or n] ";
+		std::cin.getline(line, sizeof(line));
+		valid_input = line[0] == 'y' || line[0] == 'n';
+		display_physical_address = line[0] == 'y';
+	}
+
+	valid_input = false;
+	while (!valid_input) {
+		std::cout << "Choose TLB Replacement Strategy [1:FIFO, 2: LRU] ";
+		std::cin.getline(line, sizeof(line));	
+		valid_input = memory_manager.SetTLBReplacementPolicy(line[0]) == vmm::MemoryManagerResult::kSuccess;
+	}
+
+	std::vector<LogicalAddress> logic_addresses;
 
 
-	//use file IO manager to write outputs to file
+	if (file_manager.ReadAddresses(file_path, &logic_addresses) != vmm_io::IOStatus::kSuccess) {
+		std::cout << "Could not open file " << file_path << std::endl;
+		return 0;
+	}
 
+	std::string results;
+	results.reserve(logic_addresses.size() * 15);
+
+	vmm::MemoryManagerResult read_result;
+	Byte value;
+	PhyscialAddress phy_addr;
+
+	for (unsigned int i = 0; i < logic_addresses.size(); i++) {
+
+		read_result = memory_manager.ReadAddress(logic_addresses[i], &value, &phy_addr);
+
+		results.append("Virtual Address: ");
+		results.append(std::to_string(logic_addresses[i]));
+
+		if (read_result == vmm::MemoryManagerResult::kSuccess) {
+			if (display_physical_address)
+				results += "; Physical Address: " + std::to_string(phy_addr);
+			results += "; Value: " + std::to_string((unsigned short int)value);
+		}
+		else {
+			results.append("Read operation failed: ");
+			results.append(memory_manager.GetErrorMessage());
+		}
+			results.append("\n");
+	}
+
+	std::cout << results;
+	file_manager.WriteFile(output_file, results);
+	std::cout << "results were stored in " << output_file << std::endl;
 
     return 0;
 }

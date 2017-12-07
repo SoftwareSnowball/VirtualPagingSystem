@@ -3,8 +3,8 @@
 namespace vmm {
 namespace memory {
 
-TLB::TLB(Count max_entries)
-	:max_entries_(max_entries) {
+TLB::TLB(Count max_entries, bool use_tlb)
+	:max_entries_(max_entries), use_lru_(use_tlb) {
 }
 
 TLB::~TLB() {
@@ -22,7 +22,9 @@ TLBResult TLB::GetFrame(PageNumber page_number, FrameNumber * frame) {
 		if (itr->page == page_number)
 		{
 			*frame = itr->frame;
-			entries_.splice(entries_.begin(), entries_, itr); //move element to front
+			if (use_lru_)
+				entries_.splice(entries_.begin(), entries_, itr); //move element to front
+
 			return TLBResult::kHit;
 		}
 	}
@@ -45,6 +47,17 @@ TLBResult TLB::Update(PageNumber page, FrameNumber frame) {
 		entries_.erase(--end);
 	}
 	
+	return TLBResult::kSuccess;
+}
+
+TLBResult TLB::EnableLRU() {
+	use_lru_ = true;
+	return TLBResult::kSuccess;
+}
+
+TLBResult TLB::DisableLRU()
+{
+	use_lru_ = false;
 	return TLBResult::kSuccess;
 }
 

@@ -42,6 +42,20 @@ BackingstoreReaderCode BackingstoreManager::GetPage(PageNumber page_number, Byte
 	return BackingstoreReaderCode::kSuccess;
 }
 
+Size BackingstoreManager::GetBackingStoreSize()
+{
+	std::ifstream backingstore(backingstore_path_, std::ios::binary);
+	if (backingstore.fail())
+	{
+		std::string exceptionMsg = "Backingstore cannot be opened at location ";
+		exceptionMsg.append(backingstore_path_);
+		throw std::exception(exceptionMsg.c_str()); //TODO: find better exception type
+	}
+	
+
+	return backingstore.end;
+}
+
 
 
 

@@ -24,17 +24,20 @@ struct TLBEntry {
 
 class TLB {
 public:
-	TLB(Count max_entries);
+	TLB(Count max_entries, bool use_tlb = true);
 	~TLB();
 
 	TLBResult GetFrame(PageNumber page_number, FrameNumber* frame);
 	TLBResult Update(PageNumber page, FrameNumber frame);
+	TLBResult EnableLRU();
+	TLBResult DisableLRU();
 
 private:
 	TLBResult MoveToFront(TLBEntry* target);
 	TLBResult PushFront(int target);
 
 private:
+	bool use_lru_;
 	const Count max_entries_;
 	std::list<TLBEntry> entries_;
 };
