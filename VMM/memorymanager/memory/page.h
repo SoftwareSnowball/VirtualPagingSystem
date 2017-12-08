@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "..\..\utils\types.h"
-#include "..\..\utils\parameters.h"
+#include "../../utils/types.h"
+#include "../../utils/parameters.h"
 
 
 //depreciated and no longer included in design

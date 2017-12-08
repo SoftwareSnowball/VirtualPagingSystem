@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "..\..\utils\types.h"
-#include "..\..\utils\parameters.h"
+#include "../../utils/types.h"
+#include "../../utils/parameters.h"
 
 namespace vmm {
 namespace memory {

@@ -2,9 +2,9 @@
 #define TEST_PAGE_TABLE_H_
 
 
-#include "..\memorymanager\memory\page_table.h"
+#include "../memorymanager/memory/page_table.h"
 
-#include "..\external\catch.hpp"
+#include "../external/catch.hpp"
 
 using namespace vmm::memory;
 using namespace vmm_parameters;

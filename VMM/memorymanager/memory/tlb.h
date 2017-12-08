@@ -2,7 +2,7 @@
 #define TLB_H_
 
 #include <list>
-#include "..\..\utils\types.h"
+#include "../../utils/types.h"
 
 
 namespace vmm {

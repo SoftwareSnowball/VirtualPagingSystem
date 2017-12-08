@@ -4,12 +4,12 @@
 #include <memory> //not to be confused with namespace memory
 #include <string>
 
-#include "..\utils\types.h"
-#include "..\utils\parameters.h"
-#include "memory\main_memory.h"
-#include "memory\page_table.h"
-#include "memory\tlb.h"
-#include "backingstore\backingstore_manager.h"
+#include "../utils/types.h"
+#include "../utils/parameters.h"
+#include "memory/main_memory.h"
+#include "memory/page_table.h"
+#include "memory/tlb.h"
+#include "backingstore/backingstore_manager.h"
 
 #define TLB_REPLACE_FIFO '1'
 #define TLB_REPLACE_LRU '2'

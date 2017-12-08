@@ -29,9 +29,9 @@ inputs:
 
 
 
-#include "..\external\catch.hpp"
-#include "..\utils\parameters.h"
-#include "..\memorymanager\memory_manager.h"
+#include "../external/catch.hpp"
+#include "../utils/parameters.h"
+#include "../memorymanager/memory_manager.h"
 
 TEST_CASE("Test Memory Manager Init", "[VMM]") {
 

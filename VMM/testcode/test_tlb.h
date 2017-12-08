@@ -1,8 +1,8 @@
 #ifndef TEST_TLB_H_
 #define TEST_TLB_H_
 
-#include "..\memorymanager\memory\tlb.h"
-#include "..\external\catch.hpp"
+#include "../memorymanager/memory/tlb.h"
+#include "../external/catch.hpp"
 
 using namespace vmm::memory;
 

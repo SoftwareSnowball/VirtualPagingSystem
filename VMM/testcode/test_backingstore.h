@@ -24,8 +24,8 @@ GetPage
 #include <memory>
 #include <iostream>
 
-#include "..\memorymanager\backingstore\backingstore_manager.h"
-#include "..\external\catch.hpp"
+#include "../memorymanager/backingstore/backingstore_manager.h"
+#include "../external/catch.hpp"
 
 
 using namespace vmm::memory; //in order to get the test code done quickly

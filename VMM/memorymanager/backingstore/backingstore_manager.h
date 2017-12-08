@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include "..\..\utils\types.h"
-#include "..\..\utils\parameters.h"
-#include "..\memory\page.h"
+#include "../../utils/types.h"
+#include "../../utils/parameters.h"
+#include "../memory/page.h"
 
 namespace vmm {
 namespace memory {

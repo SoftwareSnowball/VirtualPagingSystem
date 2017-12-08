@@ -34,15 +34,15 @@ http://www.cplusplus.com/reference/string/stoll/
 // on standard c++ libraries
 #define RUN_TEST_CODE 1
 #if RUN_TEST_CODE
-#include "testcode\testcode.h"
+#include "testcode/testcode.h"
 #else
 
 #include <iostream>
 #include <vector>
 
-#include "utils\parameters.h"
-#include "memorymanager\memory_manager.h"
-#include "io\fileio.h"
+#include "utils/parameters.h"
+#include "memorymanager/memory_manager.h"
+#include "io/fileio.h"
 
 
 //for questions on args to main function
