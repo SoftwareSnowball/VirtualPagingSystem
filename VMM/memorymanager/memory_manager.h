@@ -11,6 +11,9 @@
 #include "memory\tlb.h"
 #include "backingstore\backingstore_manager.h"
 
+#define TLB_REPLACE_FIFO '1'
+#define TLB_REPLACE_LRU '2'
+
 namespace vmm {
 using ParametersManagedPtr = std::unique_ptr<vmm_parameters::SimulationParameters>;
 using MainMemoryManagedPtr = std::unique_ptr<memory::MainMemory>;

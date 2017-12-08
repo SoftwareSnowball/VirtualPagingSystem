@@ -15,8 +15,6 @@ MemoryManager::MemoryManager(ParametersManagedPtr parameters)
 		parameters_->backingstore_size_ = backingstore_->GetBackingStoreSize();
 	}
 
-
-
 	offset_mask_ = 0;
 	for (int i = 0; i < parameters_->page_size_bits_; i++) {
 		offset_mask_ |= 1 << i;

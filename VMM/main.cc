@@ -12,6 +12,18 @@ Purpose:
 References:
 https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int
 https://stackoverflow.com/questions/17045493/default-int-main-arguments-in-c-c
+https://stackoverflow.com/questions/8114276/how-do-i-pass-a-unique-ptr-argument-to-a-constructor-or-a-function
+http://www.cplusplus.com/reference/istream/istream/getline/
+http://www.cplusplus.com/reference/string/string/reserve/
+https://stackoverflow.com/questions/191757/how-to-concatenate-a-stdstring-and-an-int
+http://en.cppreference.com/w/cpp/memory/unique_ptr
+http://www.cplusplus.com/reference/list/list/
+http://www.cplusplus.com/reference/string/string/append/
+https://stackoverflow.com/questions/26473733/using-smart-pointers-as-a-class-member
+https://stackoverflow.com/questions/10532661/strange-segfault-with-unique-ptr-and-shared-ptr
+http://www.cplusplus.com/forum/general/147341/ (enum vs enum class)
+http://www.cplusplus.com/reference/vector/vector/
+http://www.cplusplus.com/reference/string/stoll/
 */
 
 
