@@ -11,6 +11,10 @@ MemoryManager::MemoryManager(ParametersManagedPtr parameters)
 	page_table_ = PageTableManagedPtr(new memory::PageTable(parameters_->number_of_frames_));
 	tlb_ = TLBManagedPtr(new memory::TLB(parameters_->num_tlb_entries_));
 
+	number_reads_ = 0;
+	page_faults_ = 0;
+	tlb_misses_ = 0;
+
 	if (parameters_->backingstore_size_ == 0) {
 		parameters_->backingstore_size_ = backingstore_->GetBackingStoreSize();
 	}
@@ -62,8 +66,9 @@ MemoryManagerResult MemoryManager::ReadAddress(LogicalAddress address, Byte* dat
 	Byte* frame_ptr;
 
 	if (tlb_->GetFrame(page, &frame_number) != memory::TLBResult::kHit) {
+		tlb_misses_++;
 		if (page_table_->GetFrame(page, &frame_number) != memory::PageTableResult::kHit) {	
-
+			page_faults_++;
 			page_table_->GetEmpty(&frame_number);
 			frame_ptr = main_memory_->GetFrameAddress(frame_number);
 			backingstore_->GetPage(page, frame_ptr);
@@ -76,6 +81,7 @@ MemoryManagerResult MemoryManager::ReadAddress(LogicalAddress address, Byte* dat
 
 	frame_ptr = main_memory_->GetFrameAddress(frame_number);
 
+	number_reads_++;
 	GetPhysical(frame_number, offset, phys_addr);
 	*data = frame_ptr[offset];
 
@@ -116,6 +122,16 @@ MemoryManagerResult MemoryManager::SetTLBReplacementPolicy(char policy)
 	}
 
 	return MemoryManagerResult::kFailed;
+}
+
+float MemoryManager::GetPageFaultRate()
+{
+	return float(page_faults_) / float(number_reads_);
+}
+
+float MemoryManager::GetTLBHitRate()
+{
+	return float(number_reads_ - tlb_misses_) / float(number_reads_);
 }
 
 MemoryManagerResult MemoryManager::GetPage(LogicalAddress address, PageNumber* page) {

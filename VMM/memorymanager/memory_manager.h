@@ -42,6 +42,9 @@ public:
 	MemoryManagerResult GetParameterSummary(std::string* summary);
 	MemoryManagerResult SetTLBReplacementPolicy(char policy);
 
+	float GetPageFaultRate();
+	float GetTLBHitRate();
+
 #ifndef _DEBUG
 private:
 #endif
@@ -54,6 +57,10 @@ private:
 	BitMask page_mask_;
 	bool setup_failed_;
 	std::string error_message_;
+
+	int number_reads_;
+	int tlb_misses_;
+	int page_faults_;
 
 	BackingStoreManagedPtr backingstore_;
 	ParametersManagedPtr parameters_;

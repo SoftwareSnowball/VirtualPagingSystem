@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="document\ProjectReport.txt" />
     <Text Include="Notes.txt" />
     <Text Include="prototypes.txt" />
     <Text Include="ReadMe.txt" />

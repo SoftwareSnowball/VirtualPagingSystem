@@ -1,5 +1,7 @@
 #include "page_table.h"
 
+#include <cstring>
+
 namespace vmm {
 namespace memory {
 

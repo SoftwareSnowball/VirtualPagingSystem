@@ -1,6 +1,7 @@
 #include "backingstore_manager.h"
 
 #include <fstream>
+#include <cstring>
 
 namespace vmm {
 namespace memory {
@@ -24,8 +25,7 @@ BackingstoreReaderCode BackingstoreManager::GetPage(PageNumber page_number, Byte
 	if (backingstore.fail())
 	{
 		std::string exceptionMsg = "Backingstore cannot be opened at location ";
-		exceptionMsg.append(backingstore_path_);
-		throw std::exception(exceptionMsg.c_str()); //TODO: find better exception type
+		return BackingstoreReaderCode::kFailed;
 	}
 
 	backingstore.seekg(start_location, std::ios::beg);
@@ -48,8 +48,7 @@ Size BackingstoreManager::GetBackingStoreSize()
 	if (backingstore.fail())
 	{
 		std::string exceptionMsg = "Backingstore cannot be opened at location ";
-		exceptionMsg.append(backingstore_path_);
-		throw std::exception(exceptionMsg.c_str()); //TODO: find better exception type
+		return 0;
 	}
 	
 

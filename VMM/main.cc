@@ -32,8 +32,7 @@ http://www.cplusplus.com/reference/string/stoll/
 // https://github.com/catchorg/Catch2
 // This dependency is only in my test code. My production code only depends
 // on standard c++ libraries
-#define RUN_TEST_CODE 1
-#if RUN_TEST_CODE
+#ifdef TEST_DEBUG
 #include "testcode/testcode.h"
 #else
 
@@ -124,6 +123,9 @@ int main(int arg_count, const char* arg_val[])
 		}
 			results.append("\n");
 	}
+
+	results += "\nPage fault rate: " + std::to_string(memory_manager.GetPageFaultRate() * 100) + "%\n";
+	results += "TLB hit rate: " + std::to_string(memory_manager.GetTLBHitRate() * 100) + "%\n";
 
 	std::cout << results;
 	file_manager.WriteFile(output_file, results);

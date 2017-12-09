@@ -1,0 +1,124 @@
+PROJECT REPORT
+
+IMPORTANT NOTES:
+compiler version: 
+coding style: google
+
+The data flow diagram and some other design note are in documents
+
+
+PART 11.1
+1.) 
+	From a quality control perspective each module in the system had seperate unit tests
+	to ensure they functioned properly for all expected inputs (testing the entire input
+	space would have required way more time than what I had.) Additionally, the entire
+	system was tested retriving multiple values from random addresses in the backing store.
+	The values at these addresses were confirmed by an external binary file reader.
+	Please see testcode/test_memory_manager.h Also see main.cc if you want directions for 
+	how to run the test code. You can also look at output.txt for more address data pairs.
+
+	From an algorithms standpoint, the page number and offset are extracted using
+	bit operations and bit masks based on the number of bits needed to specifiy
+	the number of pages and frames respectively. The page number could be translated
+	to a frame number by the tlb or page_table. The frame number could be translated
+	into a ptr to the start of the frame by the main_memory. (This was done by adding
+	frame_number * frame_size to the address of main_memory.data.) This number was
+	translated to a bite by getting the data at the ptr plus offset.
+	
+2.)
+	The Page table is implement using an array of PageNumbers with number of elements
+	equal to the number of frames. Each index in the page table maps to a frame, so if
+	page 5 is stored as the seventh element, it means that the data for page 5 is at 
+	frame 7.
+	
+	Physical memory is an array that is the number of frames times the size of a frame.
+	The physical memory object holds a pointer to the start of the start of main memory.
+	To get the address of a byte, the memory object takes the frame number and returns 
+	a byte pointer to the start of the frame. From there the memory manager can access
+	the specific address using array syntax. (frame_ptr[offset])
+	
+	The TLB is implemented as a linked list (uses c++ library std::list). When given
+	a page number, the tlb can searches through the list and returns the frame number
+	by reference if it can be found. If the tlb has LRU enabled, it will move the desired
+	element to the front of the list. The TLB can also be given a new page frame pair, in
+	which case it will add the pair to the front and remove the last element if the list has
+	grown too large.
+	
+	
+3.)
+	For the most part I think it does a good job, although I'm not sure how realistic
+	it is to store a linked list in the tlb when the tlb does not have a lot of memory
+	space. 
+	
+4.)
+	I used right shift, left shift, bitwise or, and bitwise and.
+	
+5.)
+	The system could be set at runtime to use either LRU or FIFO.
+	
+PART 11.2
+1.)
+	The solution should be very general in terms of most of the parameters, unfortunately, 
+	was not time to test the full input space. Currently the system cannot work with a
+	physical memory size smaller than the virtual memory size because there was not time
+	to create a page replacement mechanism. All parts of the program were sized based on
+	the contents of an object of class SimulationParameters and should scale with different
+	parameters.
+	
+2.)
+	The short answer is that parameters like the size of the TLB can be changed simply by
+	changing their default values in parameters.h.
+	
+	My plan for how this was going to work was that the FileIO object would read in a config
+	file and return a parameters object based on the contents of that file. I ran out of time
+	before I could do this. (Which is a shame because I made all my data structures 
+	dynamically sized to support this feature that I had to drop. That's a lot of work to 
+	have to waste.)
+	
+3.)
+	Yes! The only time pages are loaded is during a page fault. At that point the program
+	loads the needed page into memory.
+	
+4.)
+	As explained in part one, I ran out of time to implement a page replacement scheme
+	so this is not supported.
+	
+PART 11.3
+1.)
+	Yes and no. I believe the broad design of my program is elegant, but some of the details
+	are not implemented in an elegant manner.
+	
+	In favor of my project, the design uses a layered approach as demonstrated below:
+	
+	T2:			main
+	T1:		FileIO	MemoryManager
+	T0:	BackingstoreManager TLB PageTable MainMemory
+	
+	In my design, no module in a tier depends on another element in the same tier or above.
+	So TLB does not care how PageTable works or even know what a PageTable is. MemoryManager
+	coordinates all the behavior of the modules in T0 making the overall system behavior transparent
+	and extendable. The only exception to this is that several modules depend on SimulationParameters
+	to work correctly, but that leads to my next point.
+	
+	There are no global variables. Once a MemoryManager is created, it has controls everything it needs
+	to run. This means that the program could easily be setup to run multiple simulations using different
+	parameters and potentially compare the results.
+	
+	
+	The less elagant parts of my project are mostly details that I was rushed to complete. My 
+	SimulationParameters may have more elements in it than what is needed to fully define the
+	simulation. Also it doesn't have proper data checking to make sure it is set up in a sensible
+	manner. It's structure was a little bit ad hoc. I also had a few places where I appending
+	lots of data to the same string (although  in these cases I always tried to reserve a lot
+	of space in advance to keep the string from resizing too often.) Some of my methods are too
+	large because I didn't have a lot of time to refactor. 
+	
+2.)
+	The memory manager encapsulates everything it needs to run so multple memory managers
+	can run at the same time.
+	
+3.)
+	sources are documented in main.cc
+	
+	
+	

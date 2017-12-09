@@ -46,6 +46,7 @@
     <Text Include="TLB replacement polity.txt" />
     <Text Include="prototypes.txt" />
     <Text Include="Notes.txt" />
+    <Text Include="document\ProjectReport.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="testcode\testcode.h">
