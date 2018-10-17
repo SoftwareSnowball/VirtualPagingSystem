@@ -32,7 +32,19 @@ http://www.cplusplus.com/reference/string/stoll/
 // https://github.com/catchorg/Catch2
 // This dependency is only in my test code. My production code only depends
 // on standard c++ libraries
-#ifdef TEST_DEBUG
+
+// To enable test code go into the make file and change the line
+// FLAGS = -std=c++1y
+// to
+// FLAGS = -std=c++1y -D _DEBUG
+//
+// Additionally you'll need to get the catch.hpp file and put it in external.
+// I'm not going to include that file in my submission to avoid cheating issues.
+// 
+// I made a script file of the test cases running because honestly all of this sounds
+// like a pain.
+// 
+#ifdef _DEBUG
 #include "testcode/testcode.h"
 #else
 

@@ -2,8 +2,6 @@
 #define _PARAMETERS_H_
 
 #include "types.h"
-//Yes I included a header file in a header file. I do not enjoy the "guess which header file this header
-//file depends on" game.
 
 namespace vmm_parameters {
 
